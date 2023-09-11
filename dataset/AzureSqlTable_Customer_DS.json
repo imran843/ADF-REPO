@@ -74,7 +74,7 @@
 		],
 		"typeProperties": {
 			"schema": "SalesLT",
-			"table": "Customerta"
+			"table": "Product"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
