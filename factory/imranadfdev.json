@@ -1,0 +1,9 @@
+{
+	"name": "imranadfdev",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "2d1552ee-299d-46bf-a3be-eaca6426316c",
+		"tenantId": "994bb5dc-b9de-4c23-86e4-d99c428deb2a"
+	}
+}

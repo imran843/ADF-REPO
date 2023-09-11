@@ -1,0 +1,70 @@
+{
+	"name": "fixed length flow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "fixedlength_DS",
+						"type": "DatasetReference"
+					},
+					"name": "empfixedLength"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "fixedlengthfileoutput_DS",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "select1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Column_1 as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> empfixedLength",
+				"empfixedLength derive(empID = substring(Column_1, 1, 4),",
+				"          empName = substring(Column_1, 5, 7),",
+				"          gender = substring(Column_1, 12, 1),",
+				"          department = substring(Column_1, 13, 2),",
+				"          empContact = substring(Column_1, 15, 12)) ~> derivedColumn1",
+				"derivedColumn1 select(mapColumn(",
+				"          empID,",
+				"          empName,",
+				"          gender,",
+				"          department,",
+				"          empContact",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          id as string,",
+				"          name as string,",
+				"          avg as string",
+				"     ),",
+				"     partitionFileNames:['empfixedlength.csv'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sink1"
+			]
+		}
+	}
+}

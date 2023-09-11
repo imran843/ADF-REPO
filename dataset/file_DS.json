@@ -1,0 +1,27 @@
+{
+	"name": "file_DS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLS_LS",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"fileNam": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().fileNam",
+					"type": "Expression"
+				},
+				"fileSystem": "samples"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
