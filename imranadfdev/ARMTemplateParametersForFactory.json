@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "imranadfdev"
+		},
+		"ADLS_LS_accountKey": {
+			"value": ""
+		},
+		"ADLS_STORAGE_LS_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase_LS_connectionString": {
+			"value": ""
+		},
+		"Snowflake_LS_connectionString": {
+			"value": ""
+		},
+		"linkedService_ls_connectionString": {
+			"value": ""
+		},
+		"logging_LS_connectionString": {
+			"value": ""
+		},
+		"ADLS_LS_properties_typeProperties_url": {
+			"value": "https://imran1993adls.dfs.core.windows.net/"
+		},
+		"ADLS_STORAGE_LS_properties_typeProperties_url": {
+			"value": "https://imranadlsstorage.dfs.core.windows.net/"
+		},
+		"RestService_LS_properties_typeProperties_url": {
+			"value": "https://reqres.in/api/users"
+		},
+		"SourceHttpServer_LS_properties_typeProperties_url": {
+			"value": "https://drive.google.com"
+		}
+	}
+}
